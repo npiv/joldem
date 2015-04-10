@@ -1,19 +1,59 @@
-******
-Joldem
-******
+*******************************************************
+Joldem: Holdem range parser and tokenizer in Javascript
+*******************************************************
 
-A small utility library to parse and tokenize poker ranges in the standard format as
-usually seen on twoplustwo.
+Joldem parses and tokenizes ranges in the commonly known formats as you would see in forums or twoplustwo.
 
-A range can be represented at 3 levels of accuracy:
+## Parsing
+
+```
+joldem.parse("22") \\ gives ["2h2s", "2h2c", "2h2d", "2s2c", "2s2d", "2c2d"]
+joldem.parse("a2s") \\ gives ["ah2h", "as2s", "ac2c", "ad2d"]
+
+joldem.parse("aq+") \\ gives
+\\ ["ahqh", "asqs", "acqc", "adqd", "ahqs", "ahqc", "ahqd", "asqh", "asqc", "asqd", "acqh", 
+\\ "acqs", "acqd", "adqh", "adqs", "adqc", "ahkh", "asks", "ackc", "adkd", "ahks", "ahkc", 
+\\ "ahkd", "askh", "askc", "askd", "ackh", "acks", "ackd", "adkh", "adks", "adkc"]
+```
+
+By default parse will decompose a range into it's lowest parts. But sometimes we may want to keep a range in a higher form. Say aq+ to ['aq','ak'] or even ['aqo','aqs','ako','aks']
+
+Ranges are represented by 3 levels of accuracy:
 
 * Level 1: The exact holecards in the form AcKc or 9s9h
 * Level 2: Combos in the form AKs, AKo, AK or 99
 * Level 3: Ranges of combos in the form AQo+ or 22-77
 
-var joldem = require("joldem");
+When parsing level 1 is the default. But we can override this
+```
+joldem.parse("aq+", 2) \\ gives ["aqs", "aqo", "aks", "ako"]
+joldem.parse("aq+", 3) \\ gives ["aq", "ak"]
+```
+
+## Tokenizing
+
+If we want to bring holecards back to a range we tokenize.
+```
+  joldem.tokenize(["aq", "ak"]) // gives "AQ+"
+  joldem.tokenize(["ajs", "aq", "ak"]) // gives "AQ+ AJs"
+```
+
+Similarly as with parsing the 3 ranges come into effect. The default is to parse into the highest possible form or level 3. But we can override this
 
 ```
-joldem.parse("22-77", 2) === ["22", "33", "44", "55", "66", "77"];
-joldem.parse("22-77", 1) === ["2c2s", "2c2d", ...., "7c7s", "7c7d"];
+  joldem.tokenize(["ajs", "aq", "ak"], 2) // gives "AJs AQ AK"
 ```
+
+## Installing, Using the library.
+
+### NPM
+
+npm install joldem
+var joldem = require("joldem");
+
+### Webpage
+
+download https://raw.githubusercontent.com/npiv/joldem/master/joldem.min.js
+<script src="joldem.js"></script>
+
+joldem will then register itself as joldem and can be used in the form joldem.parse, joldem.tokenize
