@@ -58,7 +58,7 @@ var joldem = require("joldem");
 
 download https://raw.githubusercontent.com/npiv/joldem/master/joldem.min.js
 ```html
-<script src="joldem.js"></script>
+<script src="joldem.min.js"></script>
 ```
 
 joldem will then register itself as joldem and can be used in the form joldem.parse, joldem.tokenize
