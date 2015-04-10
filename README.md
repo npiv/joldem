@@ -6,7 +6,7 @@ Joldem parses and tokenizes ranges in the commonly known formats as you would se
 
 ## Parsing
 
-```
+```javascript
 joldem.parse("22") \\ gives ["2h2s", "2h2c", "2h2d", "2s2c", "2s2d", "2c2d"]
 joldem.parse("a2s") \\ gives ["ah2h", "as2s", "ac2c", "ad2d"]
 
