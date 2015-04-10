@@ -16,7 +16,7 @@ joldem.parse("aq+") \\ gives
 \\ "ahkd", "askh", "askc", "askd", "ackh", "acks", "ackd", "adkh", "adks", "adkc"]
 ```
 
-By default parse will decompose a range into it's lowest parts. But sometimes we may want to keep a range in a higher form. Say aq+ to ['aq','ak'] or even ['aqo','aqs','ako','aks']
+By default parse will decompose a range into it's lowest parts. But sometimes we may want to keep a range in a higher form. 
 
 Ranges are represented by 3 levels of accuracy:
 
@@ -24,8 +24,9 @@ Ranges are represented by 3 levels of accuracy:
 * Level 2: Combos in the form AKs, AKo, AK or 99
 * Level 3: Ranges of combos in the form AQo+ or 22-77
 
-When parsing level 1 is the default. But we can override this
-```
+When parsing level 1 is the default. But we can override this to keep the range in a higher form.
+
+```javascript
 joldem.parse("aq+", 2) \\ gives ["aqs", "aqo", "aks", "ako"]
 joldem.parse("aq+", 3) \\ gives ["aq", "ak"]
 ```
@@ -33,14 +34,14 @@ joldem.parse("aq+", 3) \\ gives ["aq", "ak"]
 ## Tokenizing
 
 If we want to bring holecards back to a range we tokenize.
-```
+```javascript
   joldem.tokenize(["aq", "ak"]) // gives "AQ+"
   joldem.tokenize(["ajs", "aq", "ak"]) // gives "AQ+ AJs"
 ```
 
 Similarly as with parsing the 3 ranges come into effect. The default is to parse into the highest possible form or level 3. But we can override this
 
-```
+```javascript
   joldem.tokenize(["ajs", "aq", "ak"], 2) // gives "AJs AQ AK"
 ```
 
@@ -48,12 +49,16 @@ Similarly as with parsing the 3 ranges come into effect. The default is to parse
 
 ### NPM
 
+```
 npm install joldem
 var joldem = require("joldem");
+```
 
 ### Webpage
 
 download https://raw.githubusercontent.com/npiv/joldem/master/joldem.min.js
+```html
 <script src="joldem.js"></script>
+```
 
 joldem will then register itself as joldem and can be used in the form joldem.parse, joldem.tokenize
