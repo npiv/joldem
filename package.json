@@ -1,0 +1,20 @@
+{
+  "author": "tantram@gmail.com",
+  "license": "BSD-2-Clause",
+  "name": "joldem",
+  "version": "0.2.1",
+  "description": "Parsing and Tokenizing Ranges for Texas Holdem",
+  "main": "lib/joldem.js",
+  "scripts": {
+    "test": "mocha",
+    "build": "browserify lib/joldem-browser.js | uglifyjs -cm > joldem.min.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "lodash": "3.6.0",
+    "mocha": "2.2.4",
+    "browserify": "~8.1.3",
+    "expect.js": "~0.3.1",
+    "uglify-js": "~2.4.16"
+  }
+}
