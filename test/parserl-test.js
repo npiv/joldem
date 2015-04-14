@@ -3,6 +3,10 @@ var expect = require("expect.js");
 describe("The parser", function () {
     var parse = require("../lib/parser");
     var tokenize = require("../lib/tokenizer");
+    
+    it("doesn't parse empty", function() {
+        expect(parse("").length).to.eql(0)
+    });
 
     it("parses from lvl 4to3 correctly", function () {
         var fromTo = {
