@@ -2,7 +2,7 @@
   "author": "tantram@gmail.com",
   "license": "BSD-2-Clause",
   "name": "joldem",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Parsing and Tokenizing Ranges for Texas Holdem",
   "main": "lib/joldem.js",
   "scripts": {
