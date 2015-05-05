@@ -3,6 +3,12 @@
   "license": "BSD-2-Clause",
   "name": "joldem",
   "version": "1.0.4",
+  "homepage": "https://github.com/npiv/joldem",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/npiv/joldem.git"
+  },
   "description": "Parsing and Tokenizing Ranges for Texas Holdem",
   "main": "lib/joldem.js",
   "scripts": {
