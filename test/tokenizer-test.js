@@ -34,4 +34,10 @@ describe("The tokenizer", function () {
             )
         }
     });
+
+    it("fixes issue #1", function() {
+      var tokens = [ "AsQs", "AcQc", "AdQd", "AhQh", "AsQc", "AsQd", "AsQh", "AcQs", "AcQd", "AcQh", "AdQs", "AdQc", "AdQh", "AhQs", "AhQc", "AhQd", "AsKs", "AcKc", "AdKd", "AhKh", "AsKc", "AsKd", "AsKh", "AcKs", "AcKd", "AcKh", "AdKs", "AdKc", "AdKh", "AhKs", "AhKc", "AhKd"];
+      var res = tok(tokens)
+      expect(res).to.eql("AQ+");
+    })
 });
